@@ -1,0 +1,37 @@
+<div class="box mt-5 cartBox" *ngIf="!activeSpinner">
+  <button class="btn btn-success" routerLink="add-products">Add Product</button>
+  <table class="table table-striped">
+    <thead>
+      <tr class="text-center">
+        <th></th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listOfProduct; let i = index">
+        <td>
+          <img class="" style="width: 25%" src="{{ item.image }}" alt="" />
+        </td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.category }}</td>
+        <td>{{ item.price }} L.E</td>
+        <td>
+          <button
+            class="btn btn-warning"
+            data-toggle="modal"
+            data-target="#viewCart"
+            routerLink="update-products/{{ item.id }}"
+          >
+            Update
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="text-center mt-5" *ngIf="activeSpinner">
+  <app-spinner></app-spinner>
+</div>
